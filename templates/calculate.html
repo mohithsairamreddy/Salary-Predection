@@ -1,0 +1,149 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Salary Prediction</title>
+</head>
+<style>
+    body {
+        background-image: url('{{ url_for('static', filename='img5.jpg') }}');
+        background-size: cover;
+        color: white;
+        font-family: Arial;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    form {
+        width: 6in;
+        background-color: white;
+        padding : 20px;
+        border-radius: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+        margin-left: 6in; /* added margin-left property */
+    }
+    label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+        color: black;
+    }
+    input[type="text"], select {
+        padding: 10px 10px 10px 40px;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        margin-bottom: 20px;
+        box-sizing: border-box;
+    }
+	input[type="number"], select {
+        padding: 10px 10px 10px 40px;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        margin-bottom: 20px;
+        box-sizing: border-box;
+    }
+    input[type="text"]::placeholder {
+        color: #aaa;
+        font-style: italic;
+		width: auto;
+    }
+    .fa {
+        position: absolute;
+        margin-top: 15px;
+        margin-left: 10px;
+        color: #aaa;
+    }
+    input[type="submit"] {
+        background-color: #FFD700; /* changed background color */
+        color: white; /* changed text color */
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 18px;
+    }
+    input[type="submit"]:hover {
+        background-color: #000000;
+    }
+    .quote {
+        position: absolute;
+        top: calc(50px + 1.5in); /* add 3 inches to the original top position */
+        left: 80px;
+        font-size: 36px;
+        font-style: italic;
+    }
+    .quote p {
+        color: white; /* set the color of the main text to white */
+    }
+    .quote p span {
+        color: #ffe75e; /* set the color of the "- Steve Jobs" text to yellow */
+    }
+    .title {
+        font-family: Arial, sans-serif;
+        font-size: 30px;
+        font-weight: bold;
+        color: #FFD700;
+        position: absolute;
+        top: 20px;
+        right: 30px;
+    }
+    .background {
+        background-image: url('{{ url_for('static', filename='img5.jpg') }}');
+        background-size: cover;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        filter: blur(8px);
+        z-index: -1; /* push the element behind other content */
+        }
+</style>
+<body>
+	<div class="background"></div>
+	<div class="title">PaY VisIoN</div>
+	<div class="quote">
+        <p><span>"</span>The sky is the limit. You never have<br>the same experience twice.<span>"</span><br><br> - <span>Frank McCourt</span></p>
+    </div>
+	<form action="{{ url_for('Salary') }}" method="post">
+		<label for="age">Age:</label>
+		<input type="number" name="age" id="age" required><br>
+        <br>
+		<label for="gender">Gender:</label>
+		<select name="gender" id="gender" required>
+            <option value="">Select gender</option>
+			<option value="0">Female</option>
+			<option value="1">Male</option>
+		</select><br>
+
+		<label for="education">Education Level:</label>
+		<select name="education" id="education" required>
+            <option value="">Select Education Level</option>
+			<option value="0">High School</option>
+			<option value="1">Bachelor's Degree</option>
+			<option value="2">Master's Degree</option>
+			<option value="3">PhD</option>
+		</select><br>
+
+		<label for="job_title">Job Title:</label>
+		<select name="job_title" id="job_title" required>
+            <option value="">Select job title</option>
+			<option value="0">Data Analyst</option>
+			<option value="1">Data Scientist</option>
+			<option value="2">Software Engineer</option>
+			<option value="3">Product Manager</option>
+		</select><br>
+
+		<label for="experience">Years of Experience:</label>
+		<input type="number" name="experience" id="experience" required><br>
+        <br>
+		<input type="submit" value="Predict Salary">
+	</form>
+</body>
+</html>

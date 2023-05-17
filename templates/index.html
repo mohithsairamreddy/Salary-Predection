@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Pay Vision</title>
+	<style>
+		body {
+			background-color: black;
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+		}
+		.hero {
+			background: linear-gradient(to padding-left, #eeeeee, transparent 40%), url('https://images.unsplash.com/photo-1531777026908-9fd3b0c4cf5c');
+			background-size: cover;
+			background-position: center;
+			height: 500px;
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			color: white;
+			position: relative;
+			}
+		.text {
+			margin-left: 50px;
+			max-width: 500px;
+			position: absolute;
+			top: 0;
+			left: 0;
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-start;
+			align-items: flex-start;
+			height: 100%;
+		}
+		h1 {
+			font-family: 'Times New Roman';
+			font-size: 50px;
+			padding-left: 20px;
+			margin-top: 9%;
+			letter-spacing: 2px;
+		}
+		h1 span {
+			color: #FFD700;
+		}
+		.hero p {
+			padding-left: 20px;
+			padding-bottom: 25px;
+			font-family: Arial;
+			letter-spacing: 1.2px;
+			line-height: 30px;
+		}
+		.logo {
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 50%;
+			height: 100%;
+			background-image: url('{{ url_for('static', filename='img2.jpg') }}');
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-position: center;
+		}
+		form {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin-top: 50px;
+		}
+		button {
+			background-color: #FFD700;
+			color: white; 
+			font-size: 20px;
+			padding: 12px 20px;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+			margin-bottom: 20px;
+			transition: background-color 0.3s ease;
+			}
+
+			button:hover {
+			background-color: #000000;
+			}
+		
+		.title {
+			font-family: Arial, sans-serif;
+			font-size: 30px;
+			font-weight: bold;
+			color: #FFD700;
+			position: absolute;
+			top: 20px;
+			left: 30px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="title">PaY VisIoN</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<header class="hero">
+		<div class="logo"></div>
+		<div class="text">
+			<h1>Get a <br><span>Right</span> <br>Paying Job</h1>
+			<p>For job seekers, our website provides valuable insights into industry standards and trends, allowing them to negotiate salaries more confidently and make informed decisions when considering job offers.</p>
+		</div>
+		
+	</header>
+	<form method="POST" action="/">
+		<button type="submit" name="page" value="input">Go to Job Listing</button>
+		<button type="submit" name="page" value="predict">Go to Prediction Page</button>
+	</form>
+</body>
+</html>

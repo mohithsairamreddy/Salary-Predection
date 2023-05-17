@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Job Search</title>
+</head>
+<style>
+    body {
+        background-image: url('{{ url_for('static', filename='img5.jpg') }}');
+        background-size: cover;
+        color: white;
+        font-family: Arial;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    form {
+        width: 6in;
+        background-color: white;
+        padding : 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+        margin-left: 6in; /* added margin-left property */
+    }
+    label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+        color: black;
+    }
+    input[type="text"], select {
+        padding: 10px 10px 10px 40px;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        margin-bottom: 20px;
+        box-sizing: border-box;
+    }
+    input[type="text"]::placeholder {
+        color: #aaa;
+        font-style: italic;
+    }
+    .fa {
+        position: absolute;
+        margin-top: 15px;
+        margin-left: 10px;
+        color: #aaa;
+    }
+    input[type="submit"] {
+        background-color: #FFD700; /* changed background color */
+        color: white; /* changed text color */
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 18px;
+    }
+    input[type="submit"]:hover {
+        background-color: #000000;
+    }
+    .back-btn {
+        background-color: #ffe75e; /* changed background color */
+        color: rgb(0, 0, 0); /* changed text color */
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 18px;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+    }
+    .back-btn:hover {
+        background-color: #ffffff;
+    }
+    .quote {
+        position: absolute;
+        top: calc(50px + 1.5in); /* add 3 inches to the original top position */
+        left: 80px;
+        font-size: 36px;
+        font-style: italic;
+    }
+    .quote p {
+        color: white; /* set the color of the main text to white */
+    }
+    .quote p span {
+        color: #ffe75e; /* set the color of the "- Steve Jobs" text to yellow */
+    }
+    .title {
+        font-family: Arial, sans-serif;
+        font-size: 30px;
+        font-weight: bold;
+        color: #FFD700;
+        position: absolute;
+        top: 20px;
+        right: 30px;
+    }
+    .background {
+        background-image: url('{{ url_for('static', filename='img5.jpg') }}');
+        background-size: cover;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        filter: blur(8px);
+        z-index: -1; /* push the element behind other content */
+        }
+</style>
+<body>
+    <div class="background"></div>
+    <div class="title">PaY VisIoN</div>
+    <div class="quote">
+        <p><span>"</span>The only way to do great work <br> is to love what you do.<span>"</span><br><br> - <span>Steve Jobs</span></p>
+    </div>
+    <form method="POST" action="{{ url_for('Jobs_List') }}" id="job-search-form">
+        <label for="job_role"><i class="fa fa-briefcase"></i> Job Role:</label>
+        <input type="text" id="job_role" name="job_role" placeholder="Enter job role" required>
+
+        <label for="location"><i class="fa fa-map-marker-alt"></i> Location:</label>
+        <input type="text" id="location" name="location" placeholder="Enter location" required>
+
+        <label for="job_type"><i class="fa fa-user-tie"></i> Job Type:</label>
+        <select id="job_type" name="job_type" required>
+            <option value="">Select job type</option>
+            <option value="Full-time">Full-time</option>
+            <option value="Part-time">Part-time</option>
+            <option value="Contract">Contract</option>
+        </select>
+
+        <label for="experience"><i class="fa fa-clock"></i> Experience:</label>
+        <select id="experience" name="experience" required>
+        <option value="">Select experience level</option>
+        <option value="Internship">Internship</option>
+        <option value="Entry level">Entry level</option>
+        <option value="Associate">Associate</option>
+        <option value="Mid-Senior level">Mid-Senior level</option>
+        </select>
+
+        <input type="submit" value="Search">
+    </form>
+</body>
+</html>

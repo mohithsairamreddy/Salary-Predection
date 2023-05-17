@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Job Search Results</title>
+    <style>
+        /* Body styles */
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+        a {
+            color: #ffe75e;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        /* Table styles */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            font-size: 16px;
+            background-color: #333;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #000000;
+            font-weight: bold;
+            color: #FFD700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        tr:hover {
+            background-color: #000000;
+        }
+        /* Form styles */
+        .search-form {
+            margin: 30px 0;
+            text-align: center;
+        }
+        .search-field {
+            padding: 10px;
+            border-radius: 20px;
+            border: none;
+            font-size: 16px;
+            width: 300px;
+            margin-right: 10px;
+        }
+        .search-button {
+            padding: 10px;
+            border-radius: 20px;
+            border: none;
+            font-size: 16px;
+            background-color: #ffe75e;
+            color: #000;
+            cursor: pointer;
+        }
+        .search-button:hover {
+            background-color: #ffdb4d;
+        }
+        .title {
+        font-family: Arial, sans-serif;
+        font-size: 30px;
+        font-weight: bold;
+        color: #FFD700;
+        position: absolute;
+        top: 20px;
+        right: 30px;
+    }
+    </style>
+</head>
+<body>
+    <div class="title">PaY VisIoN</div>
+    <div class="search-form">
+        <input type="text" class="search-field" id="search-input" placeholder="Search jobs...">
+        <button class="search-button" id="search-button">Search</button>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Company</th>
+                <th>Location</th>
+                <th>Salary</th>
+                <th>Job URL</th>
+            </tr>
+        </thead>
+        <tbody id="job-table-body">
+            {% for job in data %}
+            <tr>
+                <td>{{ job.title }}</td>
+                <td>{{ job.company }}</td>
+                <td>{{ job.location }}</td>
+                <td>{{ job.salary }}</td>
+                <td><a href="{{ job.url }}" target="_blank">Apply</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <script>
+        const searchInput = document.getElementById("search-input");
+        const searchButton = document.getElementById("search-button");
+        const jobTableBody = document.getElementById("job-table-body");
+        const jobs = document.querySelectorAll("#job-table-body tr");
+
+        searchButton.addEventListener("click", () => {
+            const searchTerm = searchInput.value.trim().toLowerCase();
+            jobs.forEach((job) => {
+                const title = job.querySelector("td:first-child").textContent.trim().toLowerCase();
+                const company = job.querySelector("td:nth-child(2)").textContent.trim().toLowerCase();
+                const location = job.querySelector("td:nth-child(3)").textContent.trim().toLowerCase();
+                const salary = job.querySelector("td:nth-child(4)").textContent.trim().toLowerCase();
+                if (title.includes(searchTerm) || company.includes(searchTerm) || location.includes(searchTerm) || salary.includes(searchTerm)) {
+                    job.style.display = "table-row";
+                } else {
+                    job.style.display = "none";
+                }
+            });
+        });
+    </script>
+</body>
+</html>
